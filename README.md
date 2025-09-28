@@ -5,11 +5,9 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/Trendyol/go-symspell)](https://goreportcard.com/report/github.com/Trendyol/go-symspell)
 [![GoDoc](https://godoc.org/github.com/Trendyol/go-symspell?status.svg)](https://godoc.org/github.com/Trendyol/go-symspell)
 
-A high-performance spell checking and correction library for Go, implementing the SymSpell algorithm with symmetric delete approach for fast and accurate spelling corrections.
-
 ## Overview
 
-SymSpell is a spell checker that uses a novel "Symmetric Delete" algorithm to achieve fast lookup times while maintaining correction quality. SymSpell precomputes all possible character deletions of dictionary words up to a specified edit distance.
+Go SymSpell is a fast and efficient spell-checking and correction library for Go. It implements the SymSpell algorithm with the “symmetric delete” approach, enabling both speed and accuracy. Unlike traditional spell checkers that generate variations of the input word, SymSpell precomputes all possible deletions of dictionary words up to a given edit distance. This allows very quick lookups while keeping correction quality high.
 
 ## Installation
 

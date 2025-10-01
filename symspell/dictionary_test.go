@@ -831,6 +831,34 @@ func TestDictionary_LoadDictionary(t *testing.T) {
 	}
 }
 
+func TestDictionary_LoadDictionaryFromMap(t *testing.T) {
+	m := map[string]int{
+		"hello": 10,
+		"world": 5,
+		"test":  20,
+	}
+
+	dict := NewDictionary(16, 7, 2, 1)
+	dict.LoadDictionaryFromMap(m)
+
+	expectedWords := map[string]int{
+		"hello": 10,
+		"world": 5,
+		"test":  20,
+	}
+
+	for expectedWord, expectedCount := range expectedWords {
+		item := dict.LookupWord(expectedWord)
+		if item == nil {
+			t.Errorf("Word %q should be in dictionary", expectedWord)
+			continue
+		}
+		if item.count != expectedCount {
+			t.Errorf("Word %q count = %d, want %d", expectedWord, item.count, expectedCount)
+		}
+	}
+}
+
 func TestDictionary_LoadDictionary_FileNotFound(t *testing.T) {
 	dict := NewDictionary(16, 7, 2, 1)
 	success, err := dict.LoadDictionary("nonexistent_file.txt", 0, 1, "\t")

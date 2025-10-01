@@ -387,6 +387,27 @@ func (d *Dictionary) getOrCreateUnigram(text string, count int) (*DictItem, bool
 	return newItem, true
 }
 
+// LoadDictionaryFromMap loads a map of words and their frequencies into the dictionary.
+//
+// This method is useful for loading pre-computed frequency dictionaries
+// into the dictionary.
+//
+// Args:
+//
+//	m: The map of words and their frequencies to load.
+//
+// Example:
+//
+//	dict.LoadDictionaryFromMap(map[string]int{
+//		"hello": 10,
+//		"world": 5,
+//	})
+func (d *Dictionary) LoadDictionaryFromMap(m map[string]int) {
+	for text, count := range m {
+		d.CreateDictionaryEntry(text, count)
+	}
+}
+
 // SetBigramCount adds or updates a bigram frequency entry in the dictionary.
 //
 // This method parses a bigram string (typically "word1 word2") and stores
